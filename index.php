@@ -5,13 +5,14 @@ function grab_image($URL){
 		if(file_exists("cache_gambar/".$filesname)){
 			return file_get_contents("cache_gambar/".$filesname);
 		}
-preg_match('/https?:\/\/([a-zA-Z0-9-_.]+)\/(.*)/i', $URL, $outdomain);
-		if(preg_match('/(blogspot.com|imgur.com)/i', $outdomain[1])){
+preg_match('/(https?:\/\/([a-zA-Z0-9-_.]+))\/(.*)/i', $URL, $outdomain);
+		/*if(preg_match('/(blogspot.com|imgur.com)/i', $outdomain[1])){
 			$IMAGE_URL= $URL;
 		}else{
 					$IMAGE_URL= 'http://i0.wp.com/'.preg_replace('/https?:\/\//i', '', $URL);
 			
-		}
+		}*/
+	$IMAGE_URL=$URL;
 		
 	$data = curl_init();
 	$header[0] = "Accept: text/xml,application/xml,application/xhtml+xml,";
