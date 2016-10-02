@@ -47,4 +47,9 @@ preg_match('/https?:\/\/([a-zA-Z0-9-_.]+)\/(.*)/i', $URL, $outdomain);
 return $hasil;	 
 }
 
-echo $_SERVER['REQUEST_URI'];
+	if(preg_match('/^\/https?:\/\//i', $_SERVER['REQUEST_URI'])){
+$image_url= preg_replace('/^\/(https?:\/\/)/i', '\\1', $_SERVER['REQUEST_URI']);
+	}else{
+$image_url= preg_replace('/^\//i', 'http://', $_SERVER['REQUEST_URI']);
+	}
+echo $image_url;
